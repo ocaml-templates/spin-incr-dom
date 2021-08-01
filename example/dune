@@ -1,0 +1,14 @@
+(env
+ (dev
+  (flags
+   (:standard -w +A-40-48-42-44 -warn-error +A-3))))
+
+(subdir
+ asset/
+ (rule
+  (target main.js)
+  (deps ../bin/main.bc.js)
+  (mode (promote-until-clean))
+  (action
+   (copy %{deps} %{target}))))
+

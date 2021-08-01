@@ -6,51 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-{% if package_manager == 'Esy' -%}
-{% raw -%}
-jobs:
-  build:
-    name: Build and test
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
-
-    steps:
-
-      - name: Use Node 14.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install esy
-        run: npm install -g esy@latest
-
-      - name: Install dependencies
-        run: esy install
-
-      - name: Build
-        run: esy build
-
-      - name: Check formatting
-        run: esy fmt
-
-      - name: Run tests
-        run: esy test
-        timeout-minutes: 1
-{%- endraw %}
-{% else -%}
-{% raw -%}
 {% raw -%}
 jobs:
   build-and-test:
@@ -96,5 +51,3 @@ jobs:
       - name: Run the unit tests
         run: make test
         timeout-minutes: 1
-{%- endraw %}
-{% endif %}

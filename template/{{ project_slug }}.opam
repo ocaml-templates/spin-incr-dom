@@ -4,12 +4,12 @@ synopsis: "{{ project_description }}"
 description: """
 {{ project_description }}
 """
-maintainer: ["{{ username }}{% if author_email %} <{{ author_email }}>{% endif %}"]
-authors: ["{{ username }}{% if author_email %} <{{ author_email }}>{% endif %}"]
+maintainer: ["{{ author_name }}{% if author_email %} <{{ author_email }}>{% endif %}"]
+authors: ["{{ author_name }}{% if author_email %} <{{ author_email }}>{% endif %}"]
 license: "MIT"
-homepage: "https://github.com/{{ github_username }}/{{ project_slug }}"
-doc: "https://{{ github_username }}.github.io/{{ project_slug }}"
-bug-reports: "https://github.com/{{ github_username }}/{{ project_slug }}/issues"
+homepage: "https://github.com/{{ github_author_name }}/{{ project_slug }}"
+doc: "https://{{ github_author_name }}.github.io/{{ project_slug }}"
+bug-reports: "https://github.com/{{ github_author_name }}/{{ project_slug }}/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
   "dune" {>= "2.0"}
@@ -40,4 +40,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/{{ github_username }}/{{ project_slug }}.git"
+dev-repo: "git+https://github.com/{{ github_author_name }}/{{ project_slug }}.git"

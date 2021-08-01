@@ -1,0 +1,35 @@
+(lang dune 2.5)
+
+(name demo)
+
+(documentation "https://tmattio.github.io/demo/")
+
+(source
+ (github tmattio/demo))
+
+(license ISC)
+
+(authors
+  "Thibaut Mattio")
+
+(maintainers
+  "Thibaut Mattio")
+
+(generate_opam_files true)
+
+(package
+ (name demo)
+ (synopsis "A short, but powerful statement about your project")
+ (description "A short, but powerful statement about your project")
+ (depends
+  (ocaml
+   (>= 4.08.0))
+  dune
+  async_kernel
+  (incr_dom
+   (>= 0.14))
+  js_of_ocaml
+  ppx_jane
+  ppx_deriving
+  (alcotest :with-test)
+  (odoc :with-doc)))
