@@ -10,16 +10,15 @@ _build/
 # Local OPAM switch
 _opam/
 {% endif %}
+# Generated static assets
+asset/main.js
+asset/main.css
 
 {%- if include_tailwindcss == 'true' %}
 
 # Normal npm stuff
 npm-debug.log
 node_modules/
-
-# Generated static assets
-static/main.js
-static/main.css
 {% endif %}
 
 {%- if package_manager == 'Esy' %}

@@ -7,3 +7,7 @@ _build/
 
 # Local OPAM switch
 _opam/
+
+# Generated static assets
+asset/main.js
+asset/main.css
