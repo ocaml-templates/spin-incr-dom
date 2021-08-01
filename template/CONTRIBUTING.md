@@ -2,14 +2,6 @@
 
 ## Setup your development environment
 
-First, you will need to install [npm](https://npmjs.com) to install Javascript dependencies.
-
-In `asset/`:
-
-```
-npm install
-```
-
 {% if package_manager == 'Esy' -%}
 You need Esy, you can install the latest version from [npm](https://npmjs.com):
 
@@ -29,10 +21,16 @@ This project uses [Dune](https://dune.build/) as a build system, if you add a de
 {%- else -%}
 You need Opam, you can install it by following [Opam's documentation](https://opam.ocaml.org/doc/Install.html).
 
-With Opam installed, you can install the dependencies with:
+With Opam installed, you can install the dependencies in a new local switch with:
 
 ```bash
-make dev
+make switch
+```
+
+Or globally, with:
+
+```bash
+make deps
 ```
 
 Then, build the project with:
@@ -42,20 +40,9 @@ make build
 ```
 {%- endif %}
 
-### Running the app
+### Running Binary
 
-Building the project will perform the following steps:
-
-- Generate a file `main.js` that will inject our application in the `#root` element of `index.html`.
-- Generate a file `main.css` that is required by `index.html`
-
-To run the application, we install `serve` as a dev dependencies. You can run a web server with the content of `asset/static` with:
-
-```sh
-cd asset && npm start
-```
-
-Or, alternatively, you can use the {% if package_manager == 'Esy' -%}`esy`{%- else %}`make`{%- endif %} alias: 
+After building the project, you can run the main binary that is produced.
 
 {% if package_manager == 'Esy' -%}
 ```bash
@@ -112,14 +99,8 @@ The following snippet describes {{ project_name }}'s repository structure.
 
 ```text
 .
-├── asset/
-|   Contains the javascript environment and the static assets.
-
-├── asset/static/
-|   Static assets of the application.
-│
 ├── bin/
-|   Source for {{ project_slug }}'s compiled application. This links to the library defined in `lib/`.
+|   Source for {{ project_slug }}'s binary. This links to the library defined in `lib/`.
 │
 ├── lib/
 |   Source for {{ project_name }}'s library. Contains {{ project_name }}'s core functionnalities.
@@ -134,7 +115,7 @@ The following snippet describes {{ project_name }}'s repository structure.
 ├── LICENSE
 │
 {%- if package_manager == 'Esy' %}
-├── package.json
+├── esy.json
 |   Esy package definition.
 |   To know more about creating Esy packages, see https://esy.sh/docs/en/configuration.html.
 {%- else %}

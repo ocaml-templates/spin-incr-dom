@@ -29,7 +29,7 @@ module Action = struct
     | UrlChange url ->
       Model.update_url model url
     | Page_home_action action ->
-      { model with
+      Model.{ model with
         page_home_model =
           Page_home.Action.apply
             model.Model.page_home_model
@@ -57,8 +57,8 @@ let view model ~inject =
   let open Incr_dom.Incr.Let_syntax in
   let%map model = model in
   match Router.route_of_url model.Model.url with
-  | Some Home ->
-    Page_home.view model.page_home_model ~inject:(fun action ->
+  | Some Route.Home ->
+    Page_home.view model.Model.page_home_model ~inject:(fun action ->
         inject (Action.Page_home_action action))
   | None ->
     Page_not_found.view ()

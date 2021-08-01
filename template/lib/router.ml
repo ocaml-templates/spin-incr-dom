@@ -42,7 +42,7 @@ let hash_of_location location_opt =
   match location_opt with
   | None ->
     ""
-  | Some location ->
+  | Some (location : location) ->
     (match location.hash with
     | "" | "#" ->
       ""
@@ -53,7 +53,7 @@ let search_of_location location_opt =
   match location_opt with
   | None ->
     ""
-  | Some location ->
+  | Some (location : location) ->
     (match location.search with
     | "" | "?" ->
       ""

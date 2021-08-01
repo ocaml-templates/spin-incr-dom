@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    {% if css_framework == 'TailwindCSS' -%}
+    "autoprefixer": "^10.3.1",
+    "tailwindcss": "^2.2.7"
+    {%- else -%}
+    "serve": "^11.3.2"
+    {%- endif %}
+  },
+  "scripts": {
+    "start": "serve -s static"
+  }
+}

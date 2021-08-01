@@ -1,15 +1,19 @@
-(lang dune 2.0)
+(lang dune 2.5)
 
 (name {{ project_slug }})
 
-(source 
- (github {{ github_username }}/{{ project_slug }}))
+{% if github_username %}(documentation "https://{{ github_username }}.github.io/{{ project_slug }}/"){% endif %}
 
-(license MIT)
+{% if github_username %}(source
+ (github {{ github_username }}/{{ project_slug }})){% endif %}
 
-(authors "{{ username }}{% if author_email %} <{{ author_email }}>{% endif %}")
+(license ISC)
 
-(maintainers "{{ username }}{% if author_email %} <{{ author_email }}>{% endif %}")
+(authors
+  "{{ author_name }}{% if author_email %} <{{ author_email }}>{% endif %}")
+
+(maintainers
+  "{{ author_name }}{% if author_email %} <{{ author_email }}>{% endif %}")
 
 (generate_opam_files true)
 
@@ -21,11 +25,11 @@
   (ocaml
    (>= 4.08.0))
   dune
-  (alcotest :with-test)
-  (odoc :with-doc)
   async_kernel
   (incr_dom
    (>= 0.14))
   js_of_ocaml
   ppx_jane
-  ppx_deriving))
+  ppx_deriving
+  (alcotest :with-test)
+  (odoc :with-doc)))

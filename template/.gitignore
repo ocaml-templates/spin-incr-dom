@@ -1,16 +1,34 @@
-# ocamlbuild working directory
+# Dune generated files
 _build/
-
-# ocamlbuild targets
-*.byte
-*.native
+*.install
 
 # Merlin configuring file for Vim and Emacs
 .merlin
 
-# Dune generated files
-*.install
+{%- if package_manager == 'Opam' %}
 
 # Local OPAM switch
 _opam/
+{% endif %}
 
+{%- if include_tailwindcss == 'true' %}
+
+# Normal npm stuff
+npm-debug.log
+node_modules/
+
+# Generated static assets
+static/main.js
+static/main.css
+{% endif %}
+
+{%- if package_manager == 'Esy' %}
+
+# Esy generated files
+_esy/
+_release/
+_export/
+npm-debug.log
+yarn-error.log
+node_modules/
+{% endif %}

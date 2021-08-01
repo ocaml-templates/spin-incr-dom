@@ -123,7 +123,7 @@ let view model ~inject =
               {%- endif %}
               ] ]
             [ txt "And here's a link to demonstrate navigation: "
-            ; Router.link ~route:Home [ txt "Home" ]
+            ; Router.link ~route:Route.Home [ txt "Home" ]
             ]
         ]
     ]
